@@ -2,6 +2,11 @@ open! Core
 
 type t = int * int * int [@@deriving sexp]
 
+let average (r, g, b) =
+  let averaged_rgb = (r + g + b) / 3 in
+  averaged_rgb, averaged_rgb, averaged_rgb
+;;
+
 let red (r, _, _) = r
 let green (_, g, _) = g
 let blue (_, _, b) = b

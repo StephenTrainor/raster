@@ -4,12 +4,13 @@ open! Core
 
     The [Pixel] module provides a representation and utility functions for working with
     RGB-color pixels. Each pixel is represented as a tuple of three integer values, one
-    each for the red, green, and blue (RGB) channels.
-*)
+    each for the red, green, and blue (RGB) channels. *)
 
 (** [t] is a tuple of three integers, representing the red, green, and blue channels of an
     RGB color pixel. *)
 type t = int * int * int [@@deriving sexp]
+
+val average : t -> t
 
 (** [red t] returns the value of the red channel of the pixel [t]. *)
 val red : t -> int
@@ -29,7 +30,8 @@ val zero : t
 val ( + ) : t -> t -> t
 
 (** [of_int x] returns an equivalent pixel value, where each channel has the same integer
-    value [x]. This function is most useful when working with grayscale colors. *)
+    value [x]. This function is most useful when working with grayscale colors.
+*)
 val of_int : int -> t
 
 (** [to_string t] returns a string representation of the pixel [t] in the format "R G B",
@@ -37,11 +39,13 @@ val of_int : int -> t
     respectively. *)
 val to_string : t -> string
 
-(** Convert from a [t] to an ocamlgraphics color (i.e., a [Graphics.color]) *)
+(** Convert from a [t] to an ocamlgraphics color (i.e., a [Graphics.color])
+*)
 val to_color : t -> Graphics.color
 
 (** Convert from a [Graphics.color] to a [t]) *)
 val of_color : Graphics.color -> t
 
-(** [equal t1 t2] returns true if the pixel values of [t1] and [t2] are equal. *)
+(** [equal t1 t2] returns true if the pixel values of [t1] and [t2] are equal.
+*)
 val equal : t -> t -> bool
