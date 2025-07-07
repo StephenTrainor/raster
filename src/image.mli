@@ -85,6 +85,15 @@ val copy : t -> t
     [y_end <= y_start], the function raises an exception. *)
 val slice : t -> x_start:int -> x_end:int -> y_start:int -> y_end:int -> t
 
+val slice_random_in_bounds
+  :  t
+  -> x_bound:int
+  -> y_bound:int
+  -> w:int
+  -> h:int
+  -> t * int * int
+
+val slice_in_bounds_from_w_h : t -> x:int -> y:int -> w:int -> h:int -> t
 val slice_in_bounds : t -> x:int -> y:int -> radius:int -> t
 
 (** [mean_pixel image] calculates the average of all the pixels in the [image] and returns

@@ -7,6 +7,7 @@ let in_bounds ~x ~y image =
 ;;
 
 let add_error_to_neighbors ~x ~y ~error image : unit =
+  (* separate constants from rest of logic *)
   if in_bounds ~x:(x + 1) ~y image
   then Image.add ~x:(x + 1) ~y ~value:(7.0 *. error /. 16.0) image;
   if in_bounds ~x:(x - 1) ~y:(y + 1) image

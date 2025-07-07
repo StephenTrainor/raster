@@ -152,6 +152,22 @@ let slice t ~x_start ~x_end ~y_start ~y_end =
   { image; width; height; max_val = t.max_val }
 ;;
 
+let slice_random_in_bounds t ~x_bound ~y_bound ~w ~h =
+  let x_start = Random.int x_bound in
+  let y_start = Random.int y_bound in
+  let x_end = x_start + w in
+  let y_end = y_start + h in
+  slice t ~x_start ~x_end ~y_start ~y_end, x_start, y_start
+;;
+
+let slice_in_bounds_from_w_h t ~x ~y ~w ~h =
+  let x_start = x
+  and y_start = y
+  and x_end = x + w
+  and y_end = y + h in
+  slice t ~x_start ~x_end ~y_start ~y_end
+;;
+
 let slice_in_bounds t ~x ~y ~radius =
   let x_start = max 0 (x - radius) in
   let y_start = max 0 (y - radius) in
